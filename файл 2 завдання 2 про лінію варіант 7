@@ -1,0 +1,69 @@
+#include <iostream>
+
+class Line {
+private:
+    int length;
+
+public:
+   
+    Line(int len) : length(len) {}
+
+    
+    bool operator>(const Line& other) const {
+        return length > other.length;
+    }
+  
+    Line operator--() {
+        --length;
+        return *this;
+    }
+
+   
+    Line operator<<(int shift) {
+        length += shift;
+        return *this;
+    }
+
+   
+    int getLength() const {
+        return length;
+    }
+};
+
+int main() {
+   
+    int length1;
+    std::cout << "Введіть довжину першої лінії: ";
+    std::cin >> length1;
+
+   
+    Line line1(length1);
+
+    
+    int length2;
+    std::cout << "Введіть довжину другої лінії: ";
+    std::cin >> length2;
+
+   
+    Line line2(length2);
+
+  
+    if (line1 > line2) {
+        std::cout << "Перша лінія довша за другу." << std::endl;
+    } else {
+        std::cout << "Друга лінія довша або рівна першій." << std::endl;
+    }
+
+   
+    --line1;
+    std::cout << "Довжина першої лінії після зменшення: " << line1.getLength() << std::endl;
+
+  
+    int shift;
+    std::cout << "Введіть величину для пересування другої лінії по горизонталі: ";
+    std::cin >> shift;
+    line2 << shift;
+    std::cout << "Довжина другої лінії після пересування: " << line2.getLength() << std::endl;
+
+    return 0;
+}
