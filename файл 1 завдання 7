@@ -1,0 +1,58 @@
+#include <iostream>
+
+class RatNum {
+private:
+    int numerator;   
+    int denominator; 
+
+public:
+    RatNum() : numerator(0), denominator(1) {}
+
+    RatNum(int num, int den) : numerator(num), denominator(den) {}
+
+    void display() {
+        std::cout << numerator << "/" << denominator << std::endl;
+    }
+
+    RatNum multiply(const RatNum &other) {
+        RatNum result;
+        result.numerator = numerator * other.numerator;
+        result.denominator = denominator * other.denominator;
+        return result;
+    }
+
+    RatNum divide(const RatNum &other) {
+        RatNum result;
+        result.numerator = numerator * other.denominator;
+        result.denominator = denominator * other.numerator;
+        return result;
+    }
+};
+
+int main() {
+    int num1, den1, num2, den2;
+
+    std::cout << "Enter the first fraction (numerator denominator): ";
+    std::cin >> num1 >> den1;
+
+    std::cout << "Enter the second fraction (numerator denominator): ";
+    std::cin >> num2 >> den2;
+
+    RatNum fraction1(num1, den1);
+    RatNum fraction2(num2, den2);
+
+    std::cout << "Fraction 1: ";
+    fraction1.display();
+    std::cout << "Fraction 2: ";
+    fraction2.display();
+
+    RatNum product = fraction1.multiply(fraction2);
+    std::cout << "Product: ";
+    product.display();
+
+    RatNum quotient = fraction1.divide(fraction2);
+    std::cout << "Quotient: ";
+    quotient.display();
+
+    return 0;
+}
