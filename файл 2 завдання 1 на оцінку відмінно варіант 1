@@ -1,0 +1,52 @@
+ #include <iostream>
+#include <cmath>
+
+
+int power(int base, unsigned int exponent) {
+    int result = 1;
+    for (unsigned int i = 0; i < exponent; ++i) {
+        result *= base;
+    }
+    return result;
+}
+
+
+float power(float base, unsigned int exponent) {
+    return std::pow(base, exponent);
+}
+
+
+double power(double base, unsigned int exponent) {
+    return std::pow(base, exponent);
+}
+
+int main() {
+   
+    int intBase;
+    unsigned int intExponent;
+    std::cout << "Enter an integer base: ";
+    std::cin >> intBase;
+    std::cout << "Enter a non-negative integer exponent: ";
+    std::cin >> intExponent;
+
+    
+    std::cout << "Result (int): " << power(intBase, intExponent) << std::endl;
+
+   
+    float floatBase;
+    std::cout << "Enter a float base: ";
+    std::cin >> floatBase;
+
+   
+    std::cout << "Result (float): " << power(floatBase, intExponent) << std::endl;
+
+    
+    double doubleBase;
+    std::cout << "Enter a double base: ";
+    std::cin >> doubleBase;
+
+    
+    std::cout << "Result (double): " << power(doubleBase, intExponent) << std::endl;
+
+    return 0;
+}
